@@ -23,6 +23,7 @@ functions = {
 }
 
 async def message_handler(message):
+    global bot, bd_users
     if message.text[0] != "/":
         return False
     def convert(string):
@@ -50,14 +51,15 @@ async def message_handler(message):
     func = temp[0]
     temp = temp[1:]
     args = []
-    match func:
-        case "add_task":
-            args = [temp[0], temp[1], datetime.datetime.strptime(temp[2], "%d.%m.%Y")]
-        case "get_all_task":
+    if func == "add_task":
+         args = [temp[0], temp[1], datetime.datetime.strptime(temp[2], "%d.%m.%Y")]
+    elif func == "get_all_task":
             args = []
-        case "start":
-            args = []
-    result = functions[func](*args)
+    elif func == "start":
+            args = [bot, bd_users]
+
+    result = await functions[func](*args)
+    print(result)
     if result is not None:
         await bot.send_message(text=result, chat_id=config.chat_id)
 

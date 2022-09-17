@@ -1,7 +1,8 @@
 import pickle
 import os
 from TaskClass import TaskClass
-def get_my_tasks(user_id: int):
+
+async def get_my_tasks(user_id: int):
     tasks = []
     for file in os.listdir("data/tasks"):
         with open(file, 'rb') as f:

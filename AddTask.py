@@ -4,7 +4,7 @@ from TaskClass import TaskClass
 import pickle
 import datetime
 
-def add_task(title: str, description: str, deadline: datetime.datetime):
+async def add_task(title: str, description: str, deadline: datetime.datetime):
     try:
         with open("data/temporary/add_task_last_id.txt", "rb") as f:
             last_id:int = pickle.load(f)
