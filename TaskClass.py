@@ -12,3 +12,4 @@ class TaskClass:
 
     def __str__(self):
         return json.dumps(self)
+
