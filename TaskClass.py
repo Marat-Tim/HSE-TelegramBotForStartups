@@ -7,3 +7,6 @@ class TaskClass:
         self.users = users
         self.title = title
         self.description = description
+
+    def __str__(self):
+        return ""
