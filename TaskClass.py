@@ -1,7 +1,7 @@
 import datetime
 
 class TaskClass:
-    def __init__(self, id: int, title: str, end=datetime.date(0, 0, 0), users=None, description='', is_ready=False):
+    def __init__(self, id: int, title: str, end=datetime.datetime(2000, 1, 1), users=None, description='', is_ready=False):
         self.id = id
         self.end = end
         self.users = users
