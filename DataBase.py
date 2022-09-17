@@ -1,5 +1,23 @@
+import os
 import pickle
 from TaskClass import TaskClass
+
+class DataBase:
+    def __init__(self, name: str):
+        self.path = name
+        os.mkdir(f"data/{name}")
+
+    def add(self, obj):
+        with open(f"data/{self.path}/{obj.id}", 'w+') as f:
+            pickle.dump(obj, f)
+
+    def get_by_id(self, id: int):
+        with open(f"data/{self.path}/{id}", 'rb') as f:
+            return pickle.load(f)
+
+    def update(self, obj):
+        with open(f"data/{self.path}/{obj.id}", 'wb') as f:
+            pickle.dump(obj, f)
 
 def get_task_by_id(id: int) -> TaskClass:
     with open(f"data/tasks/{id}.task", 'rb') as f:
