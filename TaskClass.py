@@ -9,6 +9,7 @@ class TaskClass:
         self.title = title
         self.description = description
         self.is_ready = is_ready
+        self.complete_time = complete_time
 
     def __str__(self):
         return f"{{" \
