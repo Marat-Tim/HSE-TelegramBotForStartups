@@ -3,7 +3,8 @@ from typing import List
 from TaskClass import TaskClass
 import pickle
 import datetime
-def AddTask(title: str, description: str, deadline: datetime.datetime):
+
+def add_task(title: str, description: str, deadline: datetime.datetime):
     try:
         with open("data/temporary/add_task_last_id.txt", "rb") as f:
             last_id:int = pickle.load(f)
@@ -15,4 +16,5 @@ def AddTask(title: str, description: str, deadline: datetime.datetime):
     last_id += 1
     with open("data/temporary/add_task_last_id.txt", "wb") as f:
         pickle.dump(last_id, f)
+    return "Successfully add task"
 
