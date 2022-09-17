@@ -11,5 +11,12 @@ class TaskClass:
         self.is_ready = is_ready
 
     def __str__(self):
-        return json.dumps(self)
+        return f"{{" \
+               f"   id: {self.id}\n" \
+               f"   title: {self.title}\n" \
+               f"   end: {str(self.end)}\n" \
+               f"   users: {self.users}\n" \
+               f"   description: {self.description}\n" \
+               f"   is ready: {self.is_ready}\n" \
+               f"}}"
 
