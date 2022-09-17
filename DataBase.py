@@ -5,13 +5,14 @@ from TaskClass import TaskClass
 class DataBase:
     def __init__(self, name: str):
         self.path = name
-        os.mkdir(f"data/{name}")
+        if not os.path.exists(f"data/{name}"):
+            os.mkdir(f"data/{name}")
 
     def add(self, obj):
         with open(f"data/{self.path}/{obj.id}", 'w+') as f:
             pickle.dump(obj, f)
 
-    def get_by_id(self, id: int):
+    def get_by_id(self, id):
         with open(f"data/{self.path}/{id}", 'rb') as f:
             return pickle.load(f)
 
