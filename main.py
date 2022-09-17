@@ -2,16 +2,20 @@ from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler
 import datetime
 
+from DataBase import DataBase
+import config
+
+bd_users = DataBase("users")
+bot = Client(config.bot_name, bot_token=config.bot_token)
+
+import Start
 import AddTask
 import GetMyTasks
 import GetAllTasks
 # import GetTask
-import config
-
-
-bot = Client(config.bot_name, bot_token=config.bot_token, api_id=1626177, api_hash="58fc39da0be62e1f43447871e008a3a3")
 
 functions = {
+    "start" : Start.start,
     "add_task" : AddTask.add_task,
     # "asign_task" :
     # "get_my_tasks" : GetMyTasks.get_my_tasks
@@ -50,6 +54,8 @@ async def message_handler(message):
         case "add_task":
             args = [temp[0], temp[1], datetime.datetime.strptime(temp[2], "%d.%m.%Y")]
         case "get_all_task":
+            args = []
+        case "start":
             args = []
     result = functions[func](*args)
     if result is not None:

@@ -3,3 +3,6 @@ class User:
         self.telegram_id = telegram_id
         self.telegram_handle = telegram_handle
         self.name = name
+
+    def id(self):
+        return self.telegram_handle
